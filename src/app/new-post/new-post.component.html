@@ -1,0 +1,57 @@
+<div class="form-div">
+<h1>New Post</h1>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label
+        [class.red-text]="!articleForm.get('title').valid && articleForm.get('title').touched"
+        for="userTitleInput">Post Title</label>
+      <input
+        [class.is-invalid]="!articleForm.get('title').valid && articleForm.get('title').touched"
+        [class.is-valid]="articleForm.get('title').valid"
+        type="text"
+        class="form-control"
+        id="userTitleInput"
+        formControlName="title"
+        placeholder="title">
+      <span
+        *ngIf="!articleForm.get('title').valid && articleForm.get('title').touched"
+        class="form-text red-text">Please enter some title</span>
+    </div>
+    <div class="form-group">
+      <label
+        [class.red-text]="!articleForm.get('image').valid && articleForm.get('image').touched"
+        for="userImageInput">Image Url</label>
+      <input
+        [class.is-invalid]="!articleForm.get('image').valid && articleForm.get('image').touched"
+        [class.is-valid]="articleForm.get('image').valid"
+        type="text"
+        class="form-control"
+        id="userImageInput"
+        formControlName="image"
+        placeholder="image">
+      <span
+        *ngIf="!articleForm.get('image').valid && articleForm.get('image').touched"
+        class="form-text red-text">Please enter a URL to the image</span>
+    </div>
+    <div class="form-group">
+      <label
+        [class.red-text]="!articleForm.get('body').valid && articleForm.get('body').touched"
+        [class.is-valid]="articleForm.get('body').valid"
+        for="userContentInput">Post Content</label>
+      <textarea
+        [class.is-invalid]="!articleForm.get('body').valid && articleForm.get('body').touched"
+        [class.is-valid]="articleForm.get('body').valid"
+        class="form-control"
+        id="userContentInput"
+        formControlName="body"
+        rows="5"></textarea>
+      <span
+        *ngIf="!articleForm.get('body').valid && articleForm.get('body').touched"
+        class="form-text red-text">Please enter some content</span>
+    </div>
+    <button
+      [disabled]="!articleForm.valid"
+      type="submit"
+      class="btn btn-info">Submit</button>
+  </form>
+</div>
