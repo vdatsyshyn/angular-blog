@@ -32,6 +32,17 @@ export class DataSharingService {
       );
   }
 
+  getArticle(id: string): Observable<Article> {
+    const url = `${this.postsApi}/${id}`;
+    return this.http.get<Article>(url)
+      .pipe(
+        map((data: Article) => {
+          return data;
+        }),
+        catchError(this.handleError)
+    );
+  }
+
   addArticle(article: Article): Observable<Article> {
     console.log('the request');
     console.log(article);
