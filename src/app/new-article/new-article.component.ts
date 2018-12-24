@@ -5,11 +5,11 @@ import { Article } from '../shared/models/article.model';
 
 @Component({
   selector: 'app-new-post',
-  templateUrl: './new-post.component.html',
-  styleUrls: ['./new-post.component.css']
+  templateUrl: './new-article.component.html',
+  styleUrls: ['./new-article.component.css']
 })
-export class NewPostComponent implements OnInit {
-  articleForm: FormGroup;
+export class NewArticleComponent implements OnInit {
+  public articleForm: FormGroup;
 
   constructor(private dataSharingService: DataSharingService) { }
 

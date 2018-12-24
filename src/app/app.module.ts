@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppHeaderComponent } from './shared/components/app-header/app-header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SinglePostComponent } from './single-post/single-post.component';
-import { NewPostComponent } from './new-post/new-post.component';
+import { NewArticleComponent } from './new-article/new-article.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { NewPostComponent } from './new-post/new-post.component';
     AppHeaderComponent,
     DashboardComponent,
     SinglePostComponent,
-    NewPostComponent
+    NewArticleComponent
   ],
   imports: [
     BrowserModule,
