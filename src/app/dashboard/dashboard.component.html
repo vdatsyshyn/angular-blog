@@ -1,1 +1,5 @@
-<app-single-post *ngFor="let article of articles" [article]="article"></app-single-post>
+<div *ngFor="let article of articles">
+  <div (click)="viewArticleDetails(article)" style="cursor: pointer">
+    <app-single-post [article]="article"></app-single-post>
+  </div>
+</div>
