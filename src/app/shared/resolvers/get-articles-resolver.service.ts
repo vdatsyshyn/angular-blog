@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { DataSharingService } from '../services/data-sharing.service';
 import { map } from 'rxjs/operators';
+
+import { DataSharingService } from '../services/data-sharing.service';
 import { Article } from '../models/article.model';
 
 @Injectable({

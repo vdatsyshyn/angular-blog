@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { Article } from '../shared/models/article.model';
 
 @Component({
@@ -14,5 +15,4 @@ export class SingleArticleComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -1,5 +1,13 @@
-<div *ngFor="let article of articles">
-  <div (click)="viewArticleDetails(article)" style="cursor: pointer">
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search an article by title"
+    style="max-width: 300px;"
+    [(ngModel)]="searchInput">
+</div>
+<div *ngFor="let article of filteredArticles">
+  <div (click)="viewArticleDetails(article._id)" style="cursor: pointer">
     <app-single-post [article]="article"></app-single-post>
   </div>
 </div>

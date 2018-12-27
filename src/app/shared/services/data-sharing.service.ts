@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { Article } from '../models/article.model';
 import { catchError, map } from 'rxjs/operators';
+
+import { Article } from '../models/article.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class DataSharingService {
           return data;
         }),
         catchError(this.handleError)
-    );
+      );
   }
 
   addArticle(article: Article): Observable<Article> {

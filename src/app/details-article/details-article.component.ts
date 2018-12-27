@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../shared/models/article.model';
 import { ActivatedRoute } from '@angular/router';
+
+import { Article } from '../shared/models/article.model';
 
 @Component({
   selector: 'app-details-article',
@@ -17,5 +18,4 @@ export class DetailsArticleComponent implements OnInit {
       this.article = data.getArticle;
     });
   }
-
 }
