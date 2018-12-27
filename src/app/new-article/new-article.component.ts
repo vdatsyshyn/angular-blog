@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataSharingService } from '../shared/services/data-sharing.service';
 import { Article } from '../shared/models/article.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -11,7 +12,8 @@ import { Article } from '../shared/models/article.model';
 export class NewArticleComponent implements OnInit {
   public articleForm: FormGroup;
 
-  constructor(private dataSharingService: DataSharingService) { }
+  constructor(private dataSharingService: DataSharingService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.articleForm = new FormGroup({
@@ -22,11 +24,11 @@ export class NewArticleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.articleForm.value);
-    this.dataSharingService.addArticle(this.articleForm.value).subscribe(
+    const newArticle = Object.assign({}, this.articleForm.value);
+    this.dataSharingService.addArticle(newArticle).subscribe(
       (data: Article) => {
-        console.log(data);
         this.articleForm.reset();
+        this.router.navigate(['dashboard']);
       },
       (error: any) => console.log(error)
     );

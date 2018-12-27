@@ -17,5 +17,4 @@ export class DetailsArticleComponent implements OnInit {
       this.article = data.getArticle;
     });
   }
-
 }
