@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Article } from '../shared/models/article.model';
 
@@ -10,9 +11,11 @@ import { Article } from '../shared/models/article.model';
 
 export class SingleArticleComponent implements OnInit {
   @Input() public article: Article;
+  private selectedArticleId: string;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.selectedArticleId = this.route.snapshot.paramMap.get('id');
   }
 }

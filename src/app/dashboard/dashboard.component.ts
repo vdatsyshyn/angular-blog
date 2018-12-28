@@ -34,14 +34,31 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: any) => {
-      console.log(data, 'Yes');
+      console.log(data, 'Dashboard');
       this.articles = data.getArticles;
     });
 
-    this.filteredArticles = this.articles;
+    this.activatedRoute.queryParamMap.subscribe((queryParams) => {
+      if (queryParams.has('searchTerm')) {
+        this.searchInput = queryParams.get('searchTerm');
+      } else {
+        this.filteredArticles = this.articles;
+      }
+    });
+
+    // if (this.activatedRoute.snapshot.queryParamMap.has('searchTerm')) {
+    //   this.searchInput = this.activatedRoute.snapshot.queryParamMap.get('searchTerm');
+    // } else {
+    //   this.filteredArticles = this.articles;
+    // }
   }
 
   viewArticleDetails(id: string): void {
-    this.router.navigate(['/articles', id]);
+    this.router.navigate(['/articles', id], {
+      queryParams: {
+        'searchTerm': this.searchInput,
+        'optionalParam': 'optionalVal'
+      }
+    });
   }
 }
