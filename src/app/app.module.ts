@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SingleArticleComponent } from './single-article/single-article.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DetailsArticleComponent } from './details-article/details-article.compo
     SingleArticleComponent,
     NewArticleComponent,
     DetailsArticleComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

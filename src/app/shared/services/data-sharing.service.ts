@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, delay, map } from 'rxjs/operators';
 
 import { Article } from '../models/article.model';
 
@@ -26,6 +26,7 @@ export class DataSharingService {
   getArticles(): Observable<Article[]> {
     return this.http.get(this.postsApi)
       .pipe(
+        delay(1000),
         map((data: Article[]) => {
           return data;
         }),
