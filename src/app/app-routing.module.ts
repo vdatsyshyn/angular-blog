@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, resolve: {getArticles: GetArticlesResolverService} },
   { path: 'articles/:id', component: DetailsArticleComponent, resolve: {getArticle: GetArticleResolverService},
     canActivate: [ArticleDetailsGuardService] },
-  { path: 'create', component: NewArticleComponent, canDeactivate: [CreateArticleDeactivateGuardService] },
+  { path: 'edit/:id', component: NewArticleComponent, canDeactivate: [CreateArticleDeactivateGuardService] },
   { path: 'notFound', component: PageNotFoundComponent }
 ];
 

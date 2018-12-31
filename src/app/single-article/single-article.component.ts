@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Article } from '../shared/models/article.model';
 
@@ -10,12 +10,27 @@ import { Article } from '../shared/models/article.model';
 })
 
 export class SingleArticleComponent implements OnInit {
+  public selectedArticleId: string;
   @Input() public article: Article;
-  private selectedArticleId: string;
+  @Input() searchInput: string;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.selectedArticleId = this.route.snapshot.paramMap.get('id');
+  }
+
+
+  readArticle() {
+    this.router.navigate(['/articles', this.article._id], {
+      queryParams: {
+        'searchTerm': this.searchInput,
+      }
+    });
+  }
+
+  updateArticle() {
+    this.router.navigate(['/edit', this.article._id]);
   }
 }

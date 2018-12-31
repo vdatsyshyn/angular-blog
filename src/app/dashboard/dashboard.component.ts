@@ -52,13 +52,4 @@ export class DashboardComponent implements OnInit {
     //   this.filteredArticles = this.articles;
     // }
   }
-
-  viewArticleDetails(id: string): void {
-    this.router.navigate(['/articles', id], {
-      queryParams: {
-        'searchTerm': this.searchInput,
-        'optionalParam': 'optionalVal'
-      }
-    });
-  }
 }

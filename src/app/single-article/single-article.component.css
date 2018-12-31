@@ -9,3 +9,8 @@
 .visited-article-background {
   background-color: lightyellow;
 }
+
+button.btn {
+  width: 100px;
+  margin: 2px;
+}

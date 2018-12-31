@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { DataSharingService } from '../shared/services/data-sharing.service';
@@ -11,21 +11,22 @@ import { Article } from '../shared/models/article.model';
   styleUrls: ['./new-article.component.css']
 })
 export class NewArticleComponent implements OnInit {
-  public articleForm: FormGroup;
+  @ViewChild('articleForm') public articleForm: NgForm;
+
+  article: Article = {
+    title: null,
+    image: null,
+    body: null
+  };
 
   constructor(private dataSharingService: DataSharingService,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.articleForm = new FormGroup({
-      'body': new FormControl(null, [Validators.required]),
-      'image': new FormControl(null, Validators.required),
-      'title': new FormControl(null, Validators.required)
-    });
   }
 
   onSubmit(): void {
-    const newArticle = Object.assign({}, this.articleForm.value);
+    const newArticle: Article = Object.assign({}, this.article);
     this.dataSharingService.addArticle(newArticle).subscribe(
       (data: Article) => {
         this.articleForm.reset();

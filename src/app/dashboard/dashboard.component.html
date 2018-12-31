@@ -7,7 +7,5 @@
     [(ngModel)]="searchInput">
 </div>
 <div *ngFor="let article of filteredArticles">
-  <div (click)="viewArticleDetails(article._id)" style="cursor: pointer">
-    <app-single-post [article]="article"></app-single-post>
-  </div>
+  <app-single-post [article]="article" [searchInput]="searchInput"></app-single-post>
 </div>

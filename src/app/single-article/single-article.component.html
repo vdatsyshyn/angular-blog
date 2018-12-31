@@ -1,9 +1,19 @@
 <div class="card" style="width: 50rem;">
   <img class="card-img-top" [src]="article.image" alt="an article image should be here">
   <div class="card-body">
-    <h5 class="card-title" [class.visited-article]="selectedArticleId === article._id">{{ article.title | uppercase }}</h5>
-    <p class="card-text" [class.visited-article-background]="selectedArticleId === article._id">{{ article.body }}</p>
+    <h5
+      class="card-title"
+      [class.visited-article]="selectedArticleId === article._id">{{ article.title | uppercase }}</h5>
+    <p
+      class="card-text"
+      [class.visited-article-background]="selectedArticleId === article._id">{{ article.body }}</p>
     <!--<a class="btn btn-primary">Read the post</a>-->
-    <button class="btn btn-info" [class.visited-article]="selectedArticleId === article._id">Read the post</button><span class="float-right">{{ article.created | date }}</span>
+    <button
+      class="btn btn-primary"
+      [class.visited-article]="selectedArticleId === article._id" (click)="readArticle()">Read</button>
+    <button class="btn btn-warning" (click)="updateArticle()">Update</button>
+    <button class="btn btn-danger">Delete</button>
+
+    <span class="float-right">{{ article.created | date }}</span>
   </div>
 </div>

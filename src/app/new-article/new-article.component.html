@@ -1,52 +1,60 @@
 <div class="form-div">
   <h1>New Post</h1>
-  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+  <form #articleForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label
-        [class.red-text]="!articleForm.get('title').valid && articleForm.get('title').touched"
-        for="userTitleInput">Post Title</label>
+        [class.red-text]="!title.valid && title.touched"
+        for="title">Article Title</label>
       <input
-        [class.is-invalid]="!articleForm.get('title').valid && articleForm.get('title').touched"
-        [class.is-valid]="articleForm.get('title').valid"
+        [(ngModel)]="article.title"
+        [class.is-invalid]="!title.valid && title.touched"
+        [class.is-valid]="title.valid"
+        name="title"
         type="text"
         class="form-control"
-        id="userTitleInput"
-        formControlName="title"
-        placeholder="title">
+        id="title"
+        placeholder="title"
+        required
+        #title="ngModel">
       <span
-        *ngIf="!articleForm.get('title').valid && articleForm.get('title').touched"
+        *ngIf="!title.valid && title.touched"
         class="form-text red-text">Please enter some title</span>
     </div>
     <div class="form-group">
       <label
-        [class.red-text]="!articleForm.get('image').valid && articleForm.get('image').touched"
-        for="userImageInput">Image Url</label>
+        [class.red-text]="!image.valid && image.touched"
+        for="image">Image Url</label>
       <input
-        [class.is-invalid]="!articleForm.get('image').valid && articleForm.get('image').touched"
-        [class.is-valid]="articleForm.get('image').valid"
+        [(ngModel)]="article.image"
+        [class.is-invalid]="!image.valid && image.touched"
+        [class.is-valid]="image.valid"
+        name="image"
         type="text"
         class="form-control"
-        id="userImageInput"
-        formControlName="image"
-        placeholder="image">
+        id="image"
+        placeholder="image"
+        required
+        #image="ngModel">
       <span
-        *ngIf="!articleForm.get('image').valid && articleForm.get('image').touched"
+        *ngIf="!image.valid && image.touched"
         class="form-text red-text">Please enter a URL to the image</span>
     </div>
     <div class="form-group">
       <label
-        [class.red-text]="!articleForm.get('body').valid && articleForm.get('body').touched"
-        [class.is-valid]="articleForm.get('body').valid"
-        for="userContentInput">Post Content</label>
+        [class.red-text]="!body.valid && body.touched"
+        for="body">Article Content</label>
       <textarea
-        [class.is-invalid]="!articleForm.get('body').valid && articleForm.get('body').touched"
-        [class.is-valid]="articleForm.get('body').valid"
+        [(ngModel)]="article.body"
+        [class.is-invalid]="!body.valid && body.touched"
+        [class.is-valid]="body.valid"
+        name="body"
         class="form-control"
-        id="userContentInput"
-        formControlName="body"
-        rows="5"></textarea>
+        id="body"
+        rows="5"
+        required
+        #body="ngModel"></textarea>
       <span
-        *ngIf="!articleForm.get('body').valid && articleForm.get('body').touched"
+        *ngIf="!body.valid && body.touched"
         class="form-text red-text">Please enter some content</span>
     </div>
     <button
