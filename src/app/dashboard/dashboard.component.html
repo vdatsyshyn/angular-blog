@@ -7,5 +7,8 @@
     [(ngModel)]="searchInput">
 </div>
 <div *ngFor="let article of filteredArticles">
-  <app-single-post [article]="article" [searchInput]="searchInput"></app-single-post>
+  <app-single-post
+    [article]="article"
+    [searchInput]="searchInput"
+    (deletingArticle)="onDeletingArticle($event)"></app-single-post>
 </div>

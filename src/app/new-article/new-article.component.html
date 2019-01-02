@@ -1,5 +1,5 @@
 <div class="form-div">
-  <h1>New Post</h1>
+  <h1 style="background-color: yellow; text-align: center">{{ formTitle }}</h1>
   <form #articleForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label
@@ -40,6 +40,21 @@
         class="form-text red-text">Please enter a URL to the image</span>
     </div>
     <div class="form-group">
+      <button
+        *ngIf="article.image !== '' && article.image !== null"
+        type="button"
+        (click)="toggleImageShow()"
+        class="btn btn-info">
+        {{ showImage ? 'Hide ' : 'Show ' }}Image
+      </button>
+    </div>
+    <div class="form-group">
+      <img
+        style="width: 500px;"
+        [src]="article.image"
+        *ngIf="showImage && article.image !== '' && article.image !== null">
+    </div>
+    <div class="form-group">
       <label
         [class.red-text]="!body.valid && body.touched"
         for="body">Article Content</label>
@@ -58,6 +73,7 @@
         class="form-text red-text">Please enter some content</span>
     </div>
     <button
+      style="width: 150px;"
       [disabled]="!articleForm.valid"
       type="submit"
       class="btn btn-info">Submit</button>

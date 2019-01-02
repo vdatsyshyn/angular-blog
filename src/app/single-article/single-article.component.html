@@ -12,8 +12,14 @@
       class="btn btn-primary"
       [class.visited-article]="selectedArticleId === article._id" (click)="readArticle()">Read</button>
     <button class="btn btn-warning" (click)="updateArticle()">Update</button>
-    <button class="btn btn-danger">Delete</button>
 
-    <span class="float-right">{{ article.created | date }}</span>
+    <span *ngIf="confirmDelete">
+      <span style="background-color: yellow; color: red; font-weight: bold;">Delete, sure?</span>
+      <button class="btn btn-danger" (click)="deleteArticle()">Yes</button>
+      <button class="btn btn-success" (click)="confirmDelete = false">No</button>
+    </span>
+    <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete = true">Delete</button>
+
+    <span class="float-right" style="background-color: yellow;">{{ article.created | date }}</span>
   </div>
 </div>

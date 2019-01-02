@@ -14,11 +14,6 @@ export class GetArticlesResolverService implements Resolve<Article[]> {
   constructor(private dataSharingService: DataSharingService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Article[]> | Promise<Article[]> | Article[] {
-    return this.dataSharingService.getArticles()
-      .pipe(
-        map((data: Article[]) => {
-          return data;
-        })
-      );
+    return this.dataSharingService.getArticles();
   }
 }

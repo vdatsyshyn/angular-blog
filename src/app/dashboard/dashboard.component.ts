@@ -52,4 +52,11 @@ export class DashboardComponent implements OnInit {
     //   this.filteredArticles = this.articles;
     // }
   }
+
+  onDeletingArticle(id: string) {
+    const i = this.filteredArticles.findIndex(article => article._id === id);
+    if (i !== -1) {
+      this.filteredArticles.splice(i, 1);
+    }
+  }
 }

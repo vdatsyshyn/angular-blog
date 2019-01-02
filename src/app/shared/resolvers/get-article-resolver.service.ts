@@ -16,11 +16,6 @@ export class GetArticleResolverService implements Resolve<Article> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Article> | Promise<Article> | Article {
     // const id = this.activatedRoute.snapshot.paramMap.get('_id');
-    return this.dataSharingService.getArticle(route.params['id'])
-      .pipe(
-        map((data: Article) => {
-          return data;
-        })
-      );
+    return this.dataSharingService.getArticle(route.params['id']);
   }
 }

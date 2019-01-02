@@ -24,7 +24,7 @@ export class DataSharingService {
   }
 
   getArticles(): Observable<Article[]> {
-    return this.http.get(this.postsApi)
+    return this.http.get<Article[]>(this.postsApi)
       .pipe(
         delay(1000),
         map((data: Article[]) => {
@@ -46,7 +46,7 @@ export class DataSharingService {
   }
 
   addArticle(article: Article): Observable<Article> {
-    console.log('the request');
+    console.log('POST request');
     console.log(article);
     return this.http.post<Article>(this.postsApi, article, {
       headers: new HttpHeaders({
@@ -55,5 +55,25 @@ export class DataSharingService {
     }).pipe(
       catchError(this.handleError)
     );
+  }
+
+  updateArticle(article: Article): Observable<any> {
+    console.log('PUT request');
+    console.log(article);
+    return this.http.put<any>(`${this.postsApi}/${article._id}`, article, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteArticle(id: string): Observable<void> {
+    const url = `${this.postsApi}/${id}`;
+    return this.http.delete<void>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 }
