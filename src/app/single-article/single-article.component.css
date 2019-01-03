@@ -12,8 +12,8 @@ div.card {
 }
 
 button.btn {
-  width: 100px;
-  margin: 2px;
+  width: 90px;
+  margin: 1px;
 }
 
 .delete-message {
@@ -26,4 +26,11 @@ button.btn {
   background-color: yellow;
   border-radius: 7px;
   padding: 5px;
+}
+
+@media only screen and (min-width: 992px) {
+  .card {
+    width: 57%;
+    margin: 0 auto;
+  }
 }

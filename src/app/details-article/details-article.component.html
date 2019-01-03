@@ -10,11 +10,13 @@
       <!--[routerLink]="['/dashboard', {id: article._id}]"-->
       <!--queryParamsHandling="merge"-->
       <!--[queryParams]="{'newParam': 'newValue'}">Back to the Dashboard</button>-->
+      <div class="d-flex justify-content-start align-items-start">
       <button
         class="btn btn-primary"
         [routerLink]="['/dashboard', {id: article._id}]"
         queryParamsHandling="preserve">Back to the Dashboard</button>
-      <span class="float-right">Created: {{ article.created | date:'medium' }}</span>
+      <span class="ml-auto">Created: {{ article.created | date:'medium' }}</span>
+      </div>
     </div>
   </div>
 </div>
