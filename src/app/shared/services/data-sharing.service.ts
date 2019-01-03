@@ -9,7 +9,7 @@ import { Article } from '../models/article.model';
   providedIn: 'root'
 })
 export class DataSharingService {
-  private readonly postsApi = 'http://localhost:3000/api/posts';
+  private readonly articlesApi = 'http://localhost:3000/api/articles';
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class DataSharingService {
   }
 
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.postsApi)
+    return this.http.get<Article[]>(this.articlesApi)
       .pipe(
         delay(1000),
         map((data: Article[]) => {
@@ -35,7 +35,7 @@ export class DataSharingService {
   }
 
   getArticle(id: string): Observable<Article> {
-    const url = `${this.postsApi}/${id}`;
+    const url = `${this.articlesApi}/${id}`;
     return this.http.get<Article>(url)
       .pipe(
         map((data: Article) => {
@@ -48,7 +48,7 @@ export class DataSharingService {
   addArticle(article: Article): Observable<Article> {
     console.log('POST request');
     console.log(article);
-    return this.http.post<Article>(this.postsApi, article, {
+    return this.http.post<Article>(this.articlesApi, article, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -60,7 +60,7 @@ export class DataSharingService {
   updateArticle(article: Article): Observable<any> {
     console.log('PUT request');
     console.log(article);
-    return this.http.put<any>(`${this.postsApi}/${article._id}`, article, {
+    return this.http.put<any>(`${this.articlesApi}/${article._id}`, article, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -70,7 +70,7 @@ export class DataSharingService {
   }
 
   deleteArticle(id: string): Observable<void> {
-    const url = `${this.postsApi}/${id}`;
+    const url = `${this.articlesApi}/${id}`;
     return this.http.delete<void>(url)
       .pipe(
         catchError(this.handleError)

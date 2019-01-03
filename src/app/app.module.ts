@@ -11,6 +11,8 @@ import { SingleArticleComponent } from './single-article/single-article.componen
 import { NewArticleComponent } from './new-article/new-article.component';
 import { DetailsArticleComponent } from './details-article/details-article.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HighlightDirective } from './shared/directives/highlight.directive';
+import { ShortenTextPipe } from './shared/pipes/shorten-text.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NewArticleComponent,
     DetailsArticleComponent,
     PageNotFoundComponent,
+    HighlightDirective,
+    ShortenTextPipe,
   ],
   imports: [
     BrowserModule,

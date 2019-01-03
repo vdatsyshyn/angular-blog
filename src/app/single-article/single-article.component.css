@@ -1,5 +1,6 @@
-.card {
+div.card {
   margin-top: 20px;
+  /*width: 50rem;*/
 }
 
 .visited-article {
@@ -13,4 +14,16 @@
 button.btn {
   width: 100px;
   margin: 2px;
+}
+
+.delete-message {
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+
+.created-date {
+  background-color: yellow;
+  border-radius: 7px;
+  padding: 5px;
 }

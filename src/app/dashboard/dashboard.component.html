@@ -3,7 +3,6 @@
     type="text"
     class="form-control"
     placeholder="Search an article by title"
-    style="max-width: 300px;"
     [(ngModel)]="searchInput">
 </div>
 <div *ngFor="let article of filteredArticles">
@@ -12,3 +11,4 @@
     [searchInput]="searchInput"
     (deletingArticle)="onDeletingArticle($event)"></app-single-post>
 </div>
+<div *ngIf="error">{{ error }} :)</div>

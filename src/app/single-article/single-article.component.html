@@ -1,25 +1,28 @@
-<div class="card" style="width: 50rem;">
+<div class="card">
   <img class="card-img-top" [src]="article.image" alt="an article image should be here">
   <div class="card-body">
     <h5
       class="card-title"
       [class.visited-article]="selectedArticleId === article._id">{{ article.title | uppercase }}</h5>
     <p
+      appHighlight
       class="card-text"
-      [class.visited-article-background]="selectedArticleId === article._id">{{ article.body }}</p>
+      [class.visited-article-background]="selectedArticleId === article._id">{{ article.body | shortenText }}</p>
     <!--<a class="btn btn-primary">Read the post</a>-->
-    <button
-      class="btn btn-primary"
-      [class.visited-article]="selectedArticleId === article._id" (click)="readArticle()">Read</button>
-    <button class="btn btn-warning" (click)="updateArticle()">Update</button>
+    <div class="border border-dark d-flex justify-content-start align-items-start">
+      <button
+        class="btn btn-primary"
+        [class.visited-article]="selectedArticleId === article._id" (click)="readArticle()">Read</button>
+      <button class="btn btn-warning" (click)="updateArticle()">Update</button>
 
-    <span *ngIf="confirmDelete">
-      <span style="background-color: yellow; color: red; font-weight: bold;">Delete, sure?</span>
-      <button class="btn btn-danger" (click)="deleteArticle()">Yes</button>
-      <button class="btn btn-success" (click)="confirmDelete = false">No</button>
-    </span>
-    <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete = true">Delete</button>
+      <span *ngIf="confirmDelete">
+        <span class="delete-message">Delete, sure?</span>
+        <button class="btn btn-danger" (click)="deleteArticle()">Yes</button>
+        <button class="btn btn-success" (click)="confirmDelete = false">No</button>
+      </span>
+      <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete = true">Delete</button>
 
-    <span class="float-right" style="background-color: yellow;">{{ article.created | date }}</span>
+      <span class="created-date">{{ article.created | date }}</span>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { DataSharingService } from '../services/data-sharing.service';
 import { Article } from '../models/article.model';
@@ -10,10 +10,13 @@ import { Article } from '../models/article.model';
   providedIn: 'root'
 })
 
-export class GetArticlesResolverService implements Resolve<Article[]> {
+export class GetArticlesResolverService implements Resolve<Article[] | string> {
   constructor(private dataSharingService: DataSharingService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Article[]> | Promise<Article[]> | Article[] {
-    return this.dataSharingService.getArticles();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Article[] | string> {
+    return this.dataSharingService.getArticles()
+      .pipe(
+        catchError((err: string) => of(err))
+      );
   }
 }
