@@ -43,7 +43,7 @@ export class NewArticleComponent implements OnInit {
         image: null,
         body: null
       };
-      this.formTitle = 'New Article';
+      this.formTitle = 'New Article :)';
       this.articleForm.reset();
     } else {
       this.formTitle = 'Update Article';

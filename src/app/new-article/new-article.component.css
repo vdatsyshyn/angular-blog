@@ -19,6 +19,8 @@ form div label {
 .form-div h1 {
   background-color: yellow;
   text-align: center;
+  border-radius: 7px;
+  padding: 3px 0;
 }
 
 /*style="width: 150px;"*/
